@@ -1,0 +1,331 @@
+{
+  "commands": [
+    {
+      "codes": [
+        "F"
+      ],
+      "description": "Set Feed rate in Units/min (See G20/G21)."
+    },
+    {
+      "codes": [
+        "G0"
+      ],
+      "description": "A Rapid positioning move at the Rapid Feed Rate. In Laser mode Laser will be turned off."
+    },
+    {
+      "codes": [
+        "G1"
+      ],
+      "description": "A Cutting move in a straight line. At the Current F rate."
+    },
+    {
+      "codes": [
+        "G2"
+      ],
+      "description": "Cut a Clockwise arc."
+    },
+    {
+      "codes": [
+        "G3"
+      ],
+      "description": "Cut an Anti-Clockwise arc."
+    },
+    {
+      "codes": [
+        "G4"
+      ],
+      "description": "Pause command execution for the time in Pnnn. P specifies the time in seconds. Other systems use milliseconds as the pause time, if used unchanged this can result in VERY long pauses."
+    },
+    {
+      "codes": [
+        "G10L2"
+      ],
+      "description": "Sets the offset for a saved origin using absolute machine coordinates."
+    },
+    {
+      "codes": [
+        "G10L20"
+      ],
+      "description": "As G10 L2 but the XYZ parameters are offsets from the current position."
+    },
+    {
+      "codes": [
+        "G17"
+      ],
+      "description": "Draw Arcs in the XY plane, default."
+    },
+    {
+      "codes": [
+        "G18"
+      ],
+      "description": "Draw Arcs in the ZX plane."
+    },
+    {
+      "codes": [
+        "G19"
+      ],
+      "description": "Draw Arcs in the YZ plane."
+    },
+    {
+      "codes": [
+        "G20"
+      ],
+      "description": "All distances and positions are in Inches"
+    },
+    {
+      "codes": [
+        "G21"
+      ],
+      "description": "All distances and positions are in mm"
+    },
+    {
+      "codes": [
+        "G28"
+      ],
+      "description": "Go to safe position. NOTE: If you have not run a homing cycle and have set the safe position this is very ‘unsafe’ to use."
+    },
+    {
+      "codes": [
+        "G28.1"
+      ],
+      "description": "Set Safe position using absolute machine coordinates."
+    },
+    {
+      "codes": [
+        "G30"
+      ],
+      "description": "Go to the saved G30 position."
+    },
+    {
+      "codes": [
+        "G30.1"
+      ],
+      "description": "Set Predefined position using absolute machine coordinates, a rapid G0 move to that position will be performed before the coordinates are saved."
+    },
+    {
+      "codes": [
+        "G38.2"
+      ],
+      "description": "Probe towards the stock, error on a failure."
+    },
+    {
+      "codes": [
+        "G38.3"
+      ],
+      "description": "As G38.2, no error on failure"
+    },
+    {
+      "codes": [
+        "G38.4"
+      ],
+      "description": "As G38.2 but move away, stop on a loss of contact."
+    },
+    {
+      "codes": [
+        "G38.5"
+      ],
+      "description": "As G38.4, no error on failure."
+    },
+    {
+      "codes": [
+        "G40"
+      ],
+      "description": "Cutter Compensation off. Grbl does not support cutter compensation."
+    },
+    {
+      "codes": [
+        "G43.1"
+      ],
+      "description": "Dynamic Tool length offset, offsets Z end of tool position for subsequent moves."
+    },
+    {
+      "codes": [
+        "G49"
+      ],
+      "description": "Cancel Tool length Offset."
+    },
+    {
+      "codes": [
+        "G53"
+      ],
+      "description": "Use machine coordinates in this command."
+    },
+    {
+      "codes": [
+        "G54"
+      ],
+      "description": "Activate the relevant saved origin."
+    },
+    {
+      "codes": [
+        "G55",
+        "G56",
+        "G57",
+        "G58",
+        "G59"
+      ],
+      "description": "As G54, activates a different saved position"
+    },
+    {
+      "codes": [
+        "G61"
+      ],
+      "description": "Exact Path mode. Grbl does not support any other modes."
+    },
+    {
+      "codes": [
+        "G80"
+      ],
+      "description": "Canned Cycle Cancel. Grbl does not support any of the canned cycle modes which this cancels so it does nothing."
+    },
+    {
+      "codes": [
+        "G90"
+      ],
+      "name": "Absolute Coordinates",
+      "description": "All distances and positions are Absolute values from the current origin."
+    },
+    {
+      "codes": [
+        "G91"
+      ],
+      "name": "Relative Coordinates",
+      "description": "All distances and positions are Relative values from the current position."
+    },
+    {
+      "codes": [
+        "G91.1"
+      ],
+      "name": "Arc Incremental Mode",
+      "description": "Sets Arc incremental position mode"
+    },
+    {
+      "codes": [
+        "G92"
+      ],
+      "description": "Sets the current coordinate point, used to set an origin point of zero, commonly known as the home position."
+    },
+    {
+      "codes": [
+        "G92.1"
+      ],
+      "description": "Reset any G92 offsets in effect to zero and zero any saved values"
+    },
+    {
+      "codes": [
+        "G93"
+      ],
+      "description": "Inverse time motion mode."
+    },
+    {
+      "codes": [
+        "G94"
+      ],
+      "description": "Units/min mode at the current F rate."
+    },
+    {
+      "codes": [
+        "M0"
+      ],
+      "description": "Pause."
+    },
+    {
+      "codes": [
+        "M1"
+      ],
+      "description": "As M0 but only pauses if an optional stop switch is on."
+    },
+    {
+      "codes": [
+        "M2",
+        "M30"
+      ],
+      "description": "Program End, turn off spindle/laser and stops the machine."
+    },
+    {
+      "codes": [
+        "M3"
+      ],
+      "description": "Start spindle clockwise. In Laser mode sets Constant power."
+    },
+    {
+      "codes": [
+        "M4"
+      ],
+      "description": "As M3, In Laser Mode sets Dynamic power."
+    },
+    {
+      "codes": [
+        "M5"
+      ],
+      "description": "Stop the Spindle"
+    },
+    {
+      "codes": [
+        "M7",
+        "M8"
+      ],
+      "description": "Coolant on as a flood. (Same as M7)"
+    },
+    {
+      "codes": [
+        "M9"
+      ],
+      "description": "Coolant off."
+    },
+    {
+      "codes": [
+        "S"
+      ],
+      "description": "Set Spindle speed in RPM or Laser Power."
+    }
+  ],
+  "parameters": [
+    {
+      "codes": ["X"],
+      "name": "X distance / position"
+    },
+    {
+      "codes": ["Y"],
+      "name": "Y distance / position"
+    },
+    {
+      "codes": ["Z"],
+      "name": "Z distance / position"
+    },
+    {
+      "codes": ["I"],
+      "name": "Z-axis arc distance / position"
+    },
+    {
+      "codes": ["J"],
+      "name": "Y-axis arc distance / position"
+    },
+    {
+      "codes": ["K"],
+      "name": "X asxis distance / position"
+    },
+    {
+      "codes": ["L"],
+      "name": "Loop Cycle Count"
+    },
+    {
+      "codes": ["N"],
+      "name": "Line Number"
+    },
+    {
+      "codes": ["R"],
+      "name": "Arc Radius",
+      "description": "Arc radius for G2 / G3"
+    },
+    {
+      "codes": ["P"],
+      "name": "Multi-purpose parameter",
+      "description": "Multi-purpose parameter depends on command it is used in"
+    },
+    {
+      "codes": ["T"],
+      "name": "Tool Selection"
+    }
+  ]
+}
