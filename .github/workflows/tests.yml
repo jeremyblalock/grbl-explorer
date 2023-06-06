@@ -1,0 +1,21 @@
+name: Tests
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - uses: c-hive/gha-yarn-cache@v2
+      - run: yarn install --frozen-lockfile --ignore-optional
+      - name: Typescript
+        run: yarn tsc
+      - name: Eslint
+        run: yarn lint
+      - name: Running tests
+        run: yarn test
+        env:
+          CI: 1
