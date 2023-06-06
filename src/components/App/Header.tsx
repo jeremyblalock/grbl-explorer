@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = function Header({
 
   return (
     <header className={styles.wrapper}>
-      <h1 className={styles.title}>GRBL Exploerer</h1>
+      <h1 className={styles.title}>GRBL Explorer</h1>
       <div className={styles.spacer} />
       <nav className={styles.nav}>
         <span className={styles.filename}>
