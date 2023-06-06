@@ -1,16 +1,23 @@
 import React, { useCallback } from 'react'
+import { File } from '../../utils/types'
 import styles from './Header.module.css'
 
 interface HeaderProps {
-  setFile: (file: string) => void
+  setFile: (filename: string, file: string) => void
+  clearFile: () => void
+  file?: File
 }
 
-const Header: React.FC<HeaderProps> = function Header({ setFile }) {
+const Header: React.FC<HeaderProps> = function Header({
+  file,
+  setFile,
+  clearFile,
+}) {
   const handleClear = useCallback(() => {
     if (!window.confirm('Are you sure you want to clear the file?')) return
 
-    setFile('')
-  }, [setFile])
+    clearFile()
+  }, [clearFile])
 
   const handleLoadFile = useCallback(() => {
     const input = document.createElement('input')
@@ -28,7 +35,7 @@ const Header: React.FC<HeaderProps> = function Header({ setFile }) {
         if (typeof result !== 'string') {
           alert('We could not process the file you uploaded')
         } else {
-          setFile(result)
+          setFile(file.name, result)
         }
       }
     }
@@ -38,10 +45,17 @@ const Header: React.FC<HeaderProps> = function Header({ setFile }) {
 
   return (
     <header className={styles.wrapper}>
-      <button onClick={handleLoadFile} type="button">
-        Open File
-      </button>
-      <button onClick={handleClear}>Clear</button>
+      <h1 className={styles.title}>GRBL Exploerer</h1>
+      <div className={styles.spacer} />
+      <nav className={styles.nav}>
+        <span className={styles.filename}>
+          {file ? file.filename : 'No File'}
+        </span>
+        <button onClick={handleLoadFile} type="button">
+          Open File
+        </button>
+        <button onClick={handleClear}>Clear</button>
+      </nav>
     </header>
   )
 }

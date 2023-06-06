@@ -22,6 +22,6 @@ module.exports = {
     '@typescript-eslint/default-param-last': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-shadow': 'off',
-    'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
   },
 }

@@ -5,20 +5,66 @@
   right: 0;
   left: 0;
   overflow-y: auto;
-  padding: 1rem 2rem 3rem;
+  padding: 1rem 0 3rem;
   overscroll-behavior: contain;
+}
+
+.combinedLine {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 0 2rem;
+  cursor: default;
+}
+
+.combinedLine:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .line {
   white-space: nowrap;
 }
 
-.clause {
+.clause,
+.lineNumber {
   font-family: monospace;
   font-size: 1rem;
-  color: blue;
+  color: black;
+}
+
+.lineNumber {
+  width: 40px;
+  color: lightgrey;
+}
+
+.line,
+.lineDescription {
+  flex: 1;
+  overflow: hidden;
 }
 
 .comment {
   color: grey;
+}
+
+.command {
+  color: #f06;
+}
+
+.parameter {
+  color: blue;
+}
+
+.directive {
+  color: #aa0;
+}
+
+.command,
+.directive {
+  font-weight: bold;
+}
+
+.command.hovered,
+.directive.hovered {
+  background: black;
 }
