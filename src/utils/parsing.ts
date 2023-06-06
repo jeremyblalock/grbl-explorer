@@ -50,7 +50,7 @@ const lex = (
   return grouped.flat()
 }
 
-const parseLine = (raw: string, lineNumber: number): Line => {
+const parseLine = (raw: string, rawLineNumber: number): Line => {
   let parts: Lexeme[] = lex([[raw]], INLINE_COMMENT, 'comment')
   parts = lex(parts, END_LINE_COMMENT, 'comment')
   parts = lex(parts, COMMAND, 'command')
@@ -89,7 +89,7 @@ const parseLine = (raw: string, lineNumber: number): Line => {
       return result
     })
 
-  return { clauses, lineNumber }
+  return { clauses, lineNumber: rawLineNumber + 1 }
 }
 
 export const parseFile = (raw: string): Line[] => {

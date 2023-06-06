@@ -3,14 +3,14 @@ import { File } from '../../utils/types'
 import styles from './Header.module.css'
 
 interface HeaderProps {
-  setFile: (filename: string, file: string) => void
+  loadFile: () => void
   clearFile: () => void
   file?: File
 }
 
 const Header: React.FC<HeaderProps> = function Header({
   file,
-  setFile,
+  loadFile,
   clearFile,
 }) {
   const handleClear = useCallback(() => {
@@ -19,43 +19,36 @@ const Header: React.FC<HeaderProps> = function Header({
     clearFile()
   }, [clearFile])
 
-  const handleLoadFile = useCallback(() => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = '.nc'
-
-    input.onchange = (event: any) => {
-      const file = event.target.files[0]
-      const reader = new FileReader()
-      reader.readAsText(file)
-
-      reader.onload = () => {
-        const result = reader.result
-
-        if (typeof result !== 'string') {
-          alert('We could not process the file you uploaded')
-        } else {
-          setFile(file.name, result)
-        }
-      }
-    }
-
-    input.click()
-  }, [])
-
   return (
     <header className={styles.wrapper}>
-      <h1 className={styles.title}>GRBL Exploerer</h1>
-      <div className={styles.spacer} />
-      <nav className={styles.nav}>
-        <span className={styles.filename}>
-          {file ? file.filename : 'No File'}
-        </span>
-        <button onClick={handleLoadFile} type="button">
-          Open File
-        </button>
-        <button onClick={handleClear}>Clear</button>
-      </nav>
+      <div className={styles.brand}>
+        <h1 className={styles.title}>GRBL Explorer</h1>
+      </div>
+      {file && (
+        <nav className={styles.nav}>
+          <span className={styles.filename}>
+            {file ? file.filename : 'No File'}
+          </span>
+          <button onClick={handleClear} className={styles.clear}>
+            X
+          </button>
+          <button onClick={loadFile} type="button" className={styles.load}>
+            Load Another File
+          </button>
+        </nav>
+      )}
+      <div className={styles.attribution}>
+        <span>Built by Jeremy Blalock</span>
+        <span className={styles.spacer}>•</span>
+        <a
+          className={styles.github}
+          href="https://github.com/jeremyblalock/grbl-explorer"
+          target="_blank"
+          rel="nofollow noreferrer"
+        >
+          Github Repository
+        </a>
+      </div>
     </header>
   )
 }

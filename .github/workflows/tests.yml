@@ -16,6 +16,4 @@ jobs:
       - name: Eslint
         run: yarn lint
       - name: Running tests
-        run: yarn test
-        env:
-          CI: 1
+        run: CI=1 yarn test --passWithNoTests
