@@ -16,10 +16,10 @@ jobs:
           node-version: 16
       - uses: c-hive/gha-yarn-cache@v2
       - run: yarn install --frozen-lockfile --ignore-optional
-      - name: Tests + lint
-        run: yarn tsc && yarn lint && CI='' yarn test
+      - name: Typescript + tests + lint
+        run: yarn tsc && yarn lint && CI=1 yarn test --passWithNoTests
       - name: Build
-        run: CI='' yarn build
+        run: yarn build
       - name: Move index.html
         run: mkdir -p build-index && mv build/index.html build-index
       - uses: jakejarvis/s3-sync-action@v0.5.1
