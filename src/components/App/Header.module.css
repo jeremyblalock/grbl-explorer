@@ -16,12 +16,69 @@
   font-weight: bold;
 }
 
-.spacer {
-  flex: 1;
-}
-
 .nav {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+}
+
+.brand,
+.nav,
+.attribution {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav {
+  justify-content: center;
+}
+
+.attribution {
+  justify-content: flex-end;
+}
+
+.github {
+  width: 24px;
+  height: 48px;
+  background: url('./github.svg') no-repeat center;
+  text-indent: -10000px;
+  overflow: hidden;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.spacer {
+  color: #8a8a8a;
+}
+
+.clear {
+  overflow: hidden;
+  text-indent: -10000px;
+  width: 24px;
+  height: 24px;
+  background: url('./clear.svg') no-repeat center;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}
+
+.load {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font: inherit;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.load:hover {
+  text-decoration: none;
 }

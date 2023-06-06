@@ -2,6 +2,7 @@
   "name": "gcode-explorer",
   "version": "0.1.0",
   "private": true,
+  "license": "GPLv2",
   "scripts": {
     "types": "yarn tsc",
     "start": "PORT=5040 react-scripts start",
