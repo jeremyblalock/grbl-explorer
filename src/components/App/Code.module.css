@@ -55,6 +55,18 @@
   color: blue;
 }
 
+.parameter.mm.relative {
+  color: #00a3ff;
+}
+
+.parameter.inch.absolute {
+  color: #009420;
+}
+
+.parameter.in.relative {
+  color: #11d100;
+}
+
 .directive {
   color: #aa0;
 }

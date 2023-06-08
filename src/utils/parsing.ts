@@ -1,6 +1,7 @@
 import shortUUID from 'short-uuid'
-import { Line, Clause, ClauseType } from './types'
 import { parseCode } from './codes'
+
+import type { Line, Clause, ClauseType, Unit, Mode } from './types'
 
 type LexemeType = ClauseType
 type Lexeme = [string, LexemeType?]
@@ -8,6 +9,18 @@ type Lexeme = [string, LexemeType?]
 const INLINE_COMMENT = /\(.*\)/g
 const END_LINE_COMMENT = /;.*/g
 const COMMAND = /[A-Z]\-?\d+(\.\d+)?/g
+
+const ABSOLUTE_CODE = 'G90'
+const RELATIVE_CODE = 'G91'
+
+const ABSOLUTE = 'absolute'
+const RELATIVE = 'relative'
+
+const MM_CODE = 'G21'
+const INCH_CODE = 'G20'
+
+const MM = 'mm'
+const INCH = 'inch'
 
 const lexSub = (
   baseLexeme: Lexeme,
@@ -92,9 +105,40 @@ const parseLine = (raw: string, rawLineNumber: number): Line => {
   return { clauses, lineNumber: rawLineNumber + 1 }
 }
 
+export const setCoordinates = (lines: Line[]): Line[] => {
+  let unit: Unit | undefined
+  let mode: Mode | undefined
+
+  const result = lines.map(line => {
+    const clauses = line.clauses.map(clause => {
+      if (clause.type === 'command') {
+        if (clause.text === ABSOLUTE_CODE) {
+          mode = ABSOLUTE
+        } else if (clause.text === RELATIVE_CODE) {
+          mode = RELATIVE
+        } else if (clause.text === MM_CODE) {
+          unit = MM
+        } else if (clause.text === INCH_CODE) {
+          unit = INCH
+        }
+      }
+
+      return { ...clause, unit, mode }
+    })
+
+    return {
+      ...line,
+      clauses,
+    }
+  })
+
+  return result
+}
+
 export const parseFile = (raw: string): Line[] => {
   const rawLines = raw.split('\n')
   const lines = rawLines.map(parseLine)
+  const post = setCoordinates(lines)
 
-  return lines
+  return post
 }

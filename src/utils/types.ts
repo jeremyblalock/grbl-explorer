@@ -1,3 +1,6 @@
+export type Unit = 'mm' | 'inch'
+export type Mode = 'absolute' | 'relative'
+
 export type ClauseType =
   | 'comment'
   | 'parameter'
@@ -11,6 +14,8 @@ export interface Clause {
   text: string
   name?: string
   description?: string
+  unit?: Unit
+  mode?: Mode
 }
 
 export interface Line {
