@@ -47,6 +47,8 @@ const ClauseItem: React.FC<ClauseProps> = function ClauseItem({
       className={classNames(
         styles.clause,
         styles[clause.type],
+        clause.mode && styles[clause.mode],
+        clause.unit && styles[clause.unit],
         hovered && styles.hovered
       )}
       onMouseEnter={handleMouseEnter}
@@ -84,6 +86,8 @@ const ClauseDescription: React.FC<ClauseProps> = function ClauseDescription({
         className={classNames(
           styles.clauseDescription,
           styles[clause.type],
+          clause.mode && styles[clause.mode],
+          clause.unit && styles[clause.unit],
           hovered && styles.hovered
         )}
         onMouseEnter={handleMouseEnter}
